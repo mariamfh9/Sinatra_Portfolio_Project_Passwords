@@ -1,0 +1,23 @@
+<form action="/owners/by" method="POST">
+
+<label>Choose a password from your safe:</label>
+<br></br>
+<%@password_types.each do |password|%>
+  <input type="radio" name="password_type" value="<%=password.password_type%>" id="password_type"><%=password.password_type%></input><br />
+<%end%>
+<br></br>
+
+<label>Or choose an existing account:</label>
+<br></br>
+<%@password_safe.each do |safe|%>
+  <input type="radio" name="account_id" value="<%=safe.account.id%>" id="account_id"><%=safe.account.name%></input><br />
+<%end%>
+<br></br>
+
+<input type="submit" value="Submit"/>
+
+
+
+
+
+</form>
