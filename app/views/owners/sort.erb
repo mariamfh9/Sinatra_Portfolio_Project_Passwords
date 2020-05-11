@@ -3,14 +3,14 @@
 <label>Choose a password from your safe:</label>
 <br></br>
 <%@password_types.each do |password|%>
-  <input type="radio" name="password_type" value="<%=password.password_type%>" id="password_type"><%=password.password_type%></input><br />
+  <input type="radio" name="account_type" value="<%=password.account_type%>" id="account_type"><%=password.account_type%></input><br />
 <%end%>
 <br></br>
 
 <label>Or choose an existing account:</label>
 <br></br>
-<%@password_safe.each do |safe|%>
-  <input type="radio" name="account_id" value="<%=safe.account.id%>" id="account_id"><%=safe.account.name%></input><br />
+<%@password_safe.each do |password|%>
+  <input type="radio" name="account_id" value="<%=password.account.id%>" id="account_id"><%=password.account.name%></input><br />
 <%end%>
 <br></br>
 
