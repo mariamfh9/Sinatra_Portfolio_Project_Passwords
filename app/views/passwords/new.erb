@@ -1,0 +1,26 @@
+<h1>Enter New Password</h1>
+
+<form action="/passwords" method="POST">
+  <br></br>
+
+  <label>Choose an account type:</label><br />
+  <%@password_types.each do |password|%>
+    <input type="radio" name="type" value="<%=password.account_type%>" id="account_type"><%=password.account_type%></input><br />
+  <%end%>
+  <label>Or add a new account type:</label><input type="text" name="account_type"></br>
+  <br></br>
+
+  <label>Choose an account:</label><br />
+  <%@password_safe.each do |password|%>
+    <input type="radio" name="account_name" value="<%=password.account.name%>" id="account_name"><%=password.account.name%></input><br />
+  <%end%>
+  <label>Or add a New Account:</label><input type="text" name="account"></br>
+  <br></br>
+
+  <label>Year:</label><input type="integer" name="value"></br>
+  <label>Price:</label><input type="integer" name="account"></br>
+  <br></br>
+
+  <input type="submit" value="Submit">
+
+</form>
