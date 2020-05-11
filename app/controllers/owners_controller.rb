@@ -20,6 +20,16 @@ class OwnersController < ApplicationController
         erb 'owners/sort'
     end 
 
+    post '/owners/by' do 
+        if params[:account_id]
+            @passwords = current_user.passwords.all.select {|x| x.account_id == params[:account_id].to_i}
+            erb :'passwords/index'
+        elsif params[:account_type]
+            @passwords = current_user.passwords.all.select {|x| x.account_type == params[:account_type]}
+            erb :'bottles/index'
+        end
+    end 
+
 end 
 
 
