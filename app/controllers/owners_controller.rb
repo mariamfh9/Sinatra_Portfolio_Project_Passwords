@@ -64,14 +64,29 @@ class OwnersController < ApplicationController
         @owner = Owner.find_by(:name => params[:name])
         if !!@owner && @owner.authenticate(params[:password])
           session[:owner_id] = @owner.id
-          redirect "owners/cellar"
+          redirect "owners/password_safe"
         else
           redirect "owners/login"
         end
     end
 
+    get '/owners/logout' do
+        if logged_in?
+          session.clear
+        end
+        redirect "/"
+      end
+    
+      helpers do
 
+        def logged_in?
+            !!session[:owner_id]
+        end 
 
+        def current_user
+            Owner.find(session[:owner_id])
+        end 
+    end
 
 
 end 
