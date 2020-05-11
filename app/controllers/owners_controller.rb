@@ -30,6 +30,30 @@ class OwnersController < ApplicationController
         end
     end 
 
+    get '/owners/signup' do 
+        if !logged_in?
+            erb :'owners/create_owner'
+        else 
+            redirect "/owners/password_safe"
+        end 
+    end 
+
+    post '/owners/signup' do 
+        if params[:name].length > 0 && params[:password].length > 0 
+            @owner=Owner.new(:name => params[:name], :password => params[:password])
+            if @owner.save
+                session[:owner_id] = @owner.id 
+                redirect "owners/password_safe"
+            else 
+                redirect "/owners/signup"
+            end 
+        else
+            redirect "/owners/signup"
+        end 
+    end 
+
+
+
 end 
 
 
