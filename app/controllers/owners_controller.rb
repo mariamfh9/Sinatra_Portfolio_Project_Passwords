@@ -52,6 +52,26 @@ class OwnersController < ApplicationController
         end 
     end 
 
+    get '/owners/login' do
+        if !logged_in?
+          erb :'owners/login'
+        else
+          redirect "owners/password_safe"
+        end
+    end
+
+    post '/owners/login' do
+        @owner = Owner.find_by(:name => params[:name])
+        if !!@owner && @owner.authenticate(params[:password])
+          session[:owner_id] = @owner.id
+          redirect "owners/cellar"
+        else
+          redirect "owners/login"
+        end
+    end
+
+
+
 
 
 end 
