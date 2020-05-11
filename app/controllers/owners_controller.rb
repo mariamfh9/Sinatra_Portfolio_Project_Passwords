@@ -12,6 +12,14 @@ class OwnersController < ApplicationController
             erb :index 
         end 
     end 
+
+    get '/owners/sort' do 
+        passwords = current_user.passwords.all 
+        @password_types = passwords.uniq{|x| x.account_type}
+        @password_safe = passwords.uniq{|x| x.account_id}
+        erb 'owners/sort'
+    end 
+
 end 
 
 
