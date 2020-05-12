@@ -1,0 +1,15 @@
+<h3>Password</h3>
+
+<p><%=Account.find(@password.account_id).name%>: <%=@password.account_type%>  <%=@password.value%> - $<%=sprintf('%.2f', @password.account)%></p>
+
+
+<form method="post" action="/passwords/<%= @password.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete"><br />
+  <input type="submit" value="Delete Password">
+</form>
+
+
+
+<a href="<%=@password.id%>/edit">Edit Password</a><br />
+
+<a href="/owners/password_safe">Return to your Password Safe</a><br />
