@@ -14,7 +14,7 @@ class PasswordsController < ApplicationController
 
     post '/passwords' do
         check_validity
-        @password = Password.create(:account_type => @account_type, :account => params[:account], :value => params[:value])
+        @password = Password.create(:account_type => @account_type, :username => params[:username], :value => params[:value])
         account = Account.find_or_create_by(:name =>@account_name)
         @password.account_id = account.id
         @password.owner_id = current_user.id
@@ -40,7 +40,7 @@ class PasswordsController < ApplicationController
         check_validity
         @password.account_type = @account_type
         @password.value = params[:value]
-        @password.account = params[:account]
+        @password.username = params[:username]
         account = Account.find_or_create_by(:name => @account_name)
         @password.account_id = account.id
         @password.save

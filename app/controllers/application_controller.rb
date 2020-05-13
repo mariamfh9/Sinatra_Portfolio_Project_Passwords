@@ -1,7 +1,6 @@
 require './config/environment'
-#
+
 class ApplicationController < Sinatra::Base
-  register Sinatra::ActiveRecordExtension
 
   configure do
     set :public_folder, 'public'
@@ -11,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'index'
+    erb :index
   end
 
 

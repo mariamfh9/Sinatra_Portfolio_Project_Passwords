@@ -1,6 +1,6 @@
 <h3>Password</h3>
 
-<p><%=Account.find(@password.account_id).name%>: <%=@password.account_type%>  <%=@password.value%> - $<%=sprintf('%.2f', @password.account)%></p>
+<p><%=Account.find(@password.account_id).name%>: <%=@password.account_type%>  <%=@password.value%> - $<%=sprintf('%.2f', @password.username)%></p>
 
 
 <form method="post" action="/passwords/<%= @password.id %>/delete">

@@ -26,7 +26,7 @@ class OwnersController < ApplicationController
             erb :'passwords/index'
         elsif params[:account_type]
             @passwords = current_user.passwords.all.select {|x| x.account_type == params[:account_type]}
-            erb :'bottles/index'
+            erb :'passwords/index'
         end
     end 
 
