@@ -6,10 +6,10 @@ class OwnersController < ApplicationController
       end
 
     get '/signup' do 
-        if !logged_in?
-            erb :'owners/create_owner', {message: "Please sign up before you log in"}
+        if logged_in?
+            redirect '/passwords'
         else 
-            redirect to '/passwords'
+            erb :'/owners/create_owner'
         end 
     end 
 
@@ -26,19 +26,19 @@ class OwnersController < ApplicationController
 
     get '/login' do
         if !logged_in?
-          erb :'owners/login'
+          erb :'/login'
         else
-          redirect "/passwords"
+          redirect '/passwords'
         end
     end
 
     post '/login' do
-        owner = Owner.find_by(:username => params[:username])
-        if owner && @owner.authenticate(params[:password])
+        @owner = Owner.find_by(:username => params[:username])
+        if @owner && @owner.authenticate(params[:password])
           session[:owner_id] = owner.id
-          redirect "/passwords"
+          redirect '/passwords'
         else
-          redirect to "/signup"
+          redirect to '/'
         end
     end
 

@@ -1,23 +1,8 @@
-<h1>Update Password</h1>
+<h2> Update Your Existing Passwords </h2>
 
-<form action="/passwords/<%=@password.id%>" method="POST">
-  <input type="hidden" name="_method" value="PATCH">
-
-
-  <label>Choose a password type:</label><br />
-  <%@password_types.each do |password|%>
-    <input type="radio" name="type" value="<%=password.account_type%>" id="account_type"<%='checked' if @password.account_type == password.account_type %>><%=password.account_type%></input><br />
-  <%end%>
-  <label>Or Add a New account type:</label><input type="text" name="account_type"></br>
-  <br></br>
-
-
-  <label>Password:</label>
-  <input type="text" name="password_value" id="password_value" value="<%=@password.password_value%>"><br />
- 
-
-  <input type="submit" value="Edit Password">
+<form method="post" action="/passwords/<%=@password.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input type="text" name="content" value="<%= @password.content %>">
+  <input type="submit" value="submit">
 </form>
-<br><br />
-<a href="/owners/password_safe">Return to your Password Safe</a><br />
 

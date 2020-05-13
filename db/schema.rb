@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20200512180503) do
   end
 
   create_table "passwords", force: :cascade do |t|
-    t.text    "content"
-    t.string  "password_value"
+    t.string  "content"
     t.integer "account_id"
   end
 

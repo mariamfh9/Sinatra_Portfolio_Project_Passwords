@@ -1,0 +1,7 @@
+<p> Your passwords, <%= @owner.username %>
+<% @owner.passwords.each do |password| %>
+<p>Your Passwords</p>
+  
+    <a href="/passwords/<%= password.id%>"><%= password.content %></a>
+
+<% end %>

@@ -1,20 +1,16 @@
-<h1>Enter New Password</h1>
+<% if Helpers.is_logged_in?(session) %>
+<%= @error %>
+  <form action='/passwords' method="post">
+    Content:
+    <input type="text" name="content"><br>
+    Add Your New Password:
 
-<form action="/passwords" method="POST">
-  <br></br>
+    <input type="submit" name="submit" id="submit">
 
- 
-  <label>Add a New Account Type:</label><input type="text" name="account_type"></br>
-  <br></br>
+    <input type="submit" name="submit">
 
+  </form>
 
-  <label>Or add a New Password:</label><input type="text" name="password"></br>
-  <br></br>
-
-  <label>Password:</label><input type="text" name="value"></br>
-  <label>Username:</label><input type="text" name="username"></br>
-  <br></br>
-
-  <input type="submit" value="Submit">
-
-</form>
+  <% else %>
+      <h1> You Must Be Logged in to Add a Password to the Vault.</h1>
+  <% end %>

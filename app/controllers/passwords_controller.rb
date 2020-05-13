@@ -3,65 +3,83 @@ class PasswordsController < ApplicationController
     get '/passwords' do
       if logged_in?
         @passwords = current_user.passwords
-        erb :'passwords/index'
+        erb :'passwords/passwords'
       else 
-        redirect '/'
+        redirect '/login'
       end 
     end 
 
     get '/passwords/new' do
       if logged_in?
-        @password_types = current_user.passwords.uniq{|x| x.account_type}
-        @password_safe = current_user.passwords.uniq{|x| x.account_id}
+        erb :'/passwords/create_password'
       else 
-        redirect 'passwords/new'
+        redirect '/login'
       end 
     end 
 
     post '/passwords' do 
-
+      if logged_in?
+        if params[:content] == ""
+          redirect to "/passwords/new"
+        else 
+          @password = current_user.passwords.build(content: params[:content])
+          if @password.save 
+            redirect to "/passwords/#{@password.id}"
+          else 
+            redirect to "/passwords/new"
+          end 
+        end 
+      else 
+        redirect to '/login'
+      end 
     end 
 
- 
-    
+  
     get '/passwords/:id/edit' do
       if logged_in?
         @password = current_user.passwords.find_by_id(params[:id])
         if @password
-          @password_types = current_user.passwords.uniq{|x| x.account_type}
-          @password_safe = current_user.passwords.uniq{|x| x.account_id}
           erb :'passwords/edit'
-        else
-          erb :index
         end
       else 
-        redirect '/passwords'
+        redirect '/login'
       end 
     end
 
     patch '/passwords/:id' do
-       
-        redirect "/passwords/#{@password.id}"
+      @password = Password.find_by_id(params[:id])
+      if logged_in?
+        if params[:content] == ""
+          redirect "/passwords/#{@password.id}/edit"
+        else 
+          @password.update(content: params[:content])
+          redirect "/passwords/#{password.id}"
+        end 
+      else 
+        redirect '/login'
+      end 
     end
 
     get '/passwords/:id' do
       if logged_in?
         @password = current_user.passwords.find_by_id(params[:id])
-        erb :'passwords/show'
+        erb :'/passwords/show'
       else 
-        redirect '/passwords'
+        redirect '/login'
       end 
     end
 
     delete '/passwords/:id' do
-      if logged_in?
         @password = current_user.passwords.find_by_id(params[:id])
-        if @password
-          @password.delete
-        end
-        redirect "/passwords"
+        if logged_in?
+          if @password
+            @password.delete
+            redirect to '/passwords'
+          else 
+            redirect to '/passwords'
+        end 
       else 
-        redirect '/passwords'
+        redirect '/login'
       end
     end
 

@@ -1,15 +1,13 @@
 <h3>Password</h3>
 
-<p><%=Account.find(@password.account_id).name%>: <%=@password.account_type%>  <%=@password.password_value%></p>
+p><%= %><%= @password.content %>
 
-
-<form method="post" action="/passwords/<%= @password.id %>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete"><br />
+<form method="post" action="/passswords/<%=@password.id%>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Password">
+  <input type="button" onclick="window.location.href = '/passwords/<%=@password.id%>/edit';" value="Edit Password"/>
 </form>
 
+<!-- <a href="/passwords/<%=@password.id%>/edit">Edit Password </a> <br><br> -->
 
-
-<a href="<%=@password.id%>/edit">Edit Passwords</a><br />
-
-<a href="/owners/password_safe">Return to your Password Safe</a><br />
+<a href="/passwords">Back to your passwords</a>
