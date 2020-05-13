@@ -2,7 +2,7 @@
 
 <ul>
   <%@passwords.each do |password|%>
-    <li><a href="/passwords/<%="#{password.id}"%>"><%=Account.find(password.account_id).name%>: <%=password.account_type%>  <%=password.value%> - $<%=sprintf('%.2f', password.username)%></a></li>
+    <li><a href="/passwords/<%="#{password.id}"%>"><%=Account.find(password.account_id).name%>: <%=password.account_type%>  <%=password.password_value%></a></li>
   <%end%>
 </ul>
 <br />

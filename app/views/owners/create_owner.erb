@@ -1,13 +1,13 @@
-<h1>Create an Account!</h1>
+<h2>Create an Account</h2>
 
-<form action="/owners/signup" method="POST">
-  <br></br>
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
 
-  <label>Name:</label><input type="text" name="name"></br>
-  <label>Password:</label><input type="text" name="password"></br>
 
-  <br></br>
-
-  <input type="submit" value="Signup">
-
+<h3>Sign Up</h3>
+<form action="/signup" method="POST">
+  <p>Name: <input type="text" name="username"></p>
+  <p>Password: <input type="text" name="password"></p>
+  <input class="btn btn-primary" type="submit">
 </form>

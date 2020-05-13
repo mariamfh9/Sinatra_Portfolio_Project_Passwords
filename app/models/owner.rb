@@ -1,6 +1,6 @@
 class Owner < ActiveRecord::Base
     has_many :accounts
-    has_many :psswords, through: :accounts
+    has_many :passwords, through: :accounts
     has_secure_password
   
     def slug

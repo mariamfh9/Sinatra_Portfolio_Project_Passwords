@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
     belongs_to :owner
-    has_one :pssword
+    has_one :password
   
     def slug
       slug_name = self.name.gsub(/[^a-zA-Z0-9]/,'-').downcase

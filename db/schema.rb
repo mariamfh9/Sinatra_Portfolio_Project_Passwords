@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(version: 20200512180503) do
   end
 
   create_table "owners", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
     t.string "password_digest"
   end
 
-  create_table "psswords", force: :cascade do |t|
+  create_table "passwords", force: :cascade do |t|
+    t.text    "content"
     t.string  "password_value"
     t.integer "account_id"
   end

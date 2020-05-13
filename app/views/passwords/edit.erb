@@ -8,20 +8,13 @@
   <%@password_types.each do |password|%>
     <input type="radio" name="type" value="<%=password.account_type%>" id="account_type"<%='checked' if @password.account_type == password.account_type %>><%=password.account_type%></input><br />
   <%end%>
-  <label>Or add a new account type:</label><input type="text" name="account_type"></br>
+  <label>Or Add a New account type:</label><input type="text" name="account_type"></br>
   <br></br>
 
-  <label>Choose a safe:</label><br />
-  <%@password_safe.each do |password|%>
-    <input type="radio" name="account_name" value="<%=password.account.name%>" id="account_name"<%='checked' if @password.account_id == password.account_id %>><%=password.account.name%></input><br />
-  <%end%>
-  <label>Or add a New Account:</label><input type="text" name="account"></br>
-  <br></br>
 
   <label>Password:</label>
-  <input type="text" name="value" id="value" value="<%=@password.value%>"><br />
-  <label>Price:</label>
-  <input type="text" name="username" id="username" value="<%=@password.username%>"><br />
+  <input type="text" name="password_value" id="password_value" value="<%=@password.password_value%>"><br />
+ 
 
   <input type="submit" value="Edit Password">
 </form>

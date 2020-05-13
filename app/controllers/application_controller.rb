@@ -12,6 +12,16 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
+  
+  helpers do
 
+    def logged_in?
+        !!session[:owner_id]
+    end 
+
+    def current_user
+      @current_user ||= Owner.find_by(id: session[:owner_id]) if session[:owner_id]
+    end
+end
 
 end
