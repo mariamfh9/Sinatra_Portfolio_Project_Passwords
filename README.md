@@ -27,7 +27,7 @@ All pull requests and bug reports are encouraged on Github at [Virtual Password 
 
 ## Image Credit 
 
-All images were pulled off of [Google Image Search](https://images.google.com/)
+All images are from [Google Image Search](https://images.google.com/).
 
 ## License
 
