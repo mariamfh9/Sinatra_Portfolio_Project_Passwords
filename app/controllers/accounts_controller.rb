@@ -37,7 +37,7 @@ class AccountsController < ApplicationController
           get '/accounts/:id/edit' do
             if logged_in?
               @account = current_user.accounts.find_by_id(params[:id])
-              if @account.owner_id == current_user.id 
+              if @account
                 erb :'/accounts/edit'
               else 
                 flash[:alert] = "This isn't your account!"
@@ -49,23 +49,32 @@ class AccountsController < ApplicationController
           end
       
           patch '/accounts/:id' do
-            @account = current_user.accounts.find_by_id(params[:id])
             if logged_in?
-              if params[:name] == ""
-                redirect "/accounts/#{@account.id}/edit"
+              @account = current_user.accounts.find_by_id(params[:id])
+              if @account
+                if params[:name] == ""
+                  redirect "/accounts/#{@account.id}/edit"
+                else 
+                  @account.update(password_content: params[:password_content])
+                  redirect "/accounts/#{@account.id}"
+                end 
               else 
-                @account.update(password_content: params[:password_content])
-                redirect "/accounts/#{@account.id}"
+                redirect '/accounts'
               end 
             else 
               redirect '/login'
+             
             end 
           end
       
           get '/accounts/:id' do
             if logged_in?
               @account = current_user.accounts.find_by_id(params[:id])
-              erb :'/accounts/show'
+              if @account
+                erb :'/accounts/show'
+              else 
+                redirect '/login'
+              end 
             else 
               redirect '/login'
             end 
@@ -74,7 +83,7 @@ class AccountsController < ApplicationController
           delete '/accounts/:id' do
               @account = current_user.accounts.find_by_id(params[:id])
               if logged_in?
-                if @account.owner_id == current_user.id 
+                if @account
                   @account.delete
                   redirect to '/accounts'
                 else 

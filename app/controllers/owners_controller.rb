@@ -19,22 +19,20 @@ class OwnersController < ApplicationController
         flash[:alert] = "Please fill in all the fields."
           redirect to '/signup'
       else 
-          @owner = Owner.new(:username => params[:username], :password => params[:password])
+        @owner = Owner.new(params)
          if @owner.save
           session[:owner_id] = @owner.id
           redirect to '/accounts'
-         else
+         else 
           flash[:alert] = "This username already exists."
-          erb :'owners/create_owner'
-         end 
-       
-          
+          redirect to '/signup'
+         end   
       end
   end 
 
     get '/login' do
         if !logged_in?
-          erb :'owners/login'
+          erb :'/owners/login'
         else
           redirect '/accounts'
         end
@@ -49,8 +47,8 @@ class OwnersController < ApplicationController
       flash[:alert] = "Please fill in all fields."
       redirect '/login'
       else
-        flash[:alert] = "Please fill in all the fields."
-        redirect to '/'
+        flash[:alert] = "Invalid username or password. If you do not have an account please sign up."
+        redirect to '/login'
       end
   end
 
