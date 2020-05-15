@@ -1,4 +1,4 @@
-# Sinatra Portfolio Project
+# Sinatra Portfolio Project-Your Virtual Password Vault
 ### Overview
 
 A webpage in which a user can create an account to store all their accounts and passwords. Never forget a password again!
