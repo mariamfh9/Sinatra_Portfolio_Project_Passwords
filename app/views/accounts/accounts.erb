@@ -1,0 +1,11 @@
+<p> Welcome to your Vault, <%= current_user.username %>
+<h2> Your Accounts </h2>
+
+<% @accounts.each do |account| %>
+  
+    <li><a href="/accounts/<%= account. id%>"><%= account.name %></a></li>
+    <br>
+<% end %>
+<br>
+
+<a href="/accounts/new">Add a new Account</a> or <a href="/logout">Logout?</a>

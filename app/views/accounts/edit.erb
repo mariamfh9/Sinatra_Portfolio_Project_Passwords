@@ -1,0 +1,8 @@
+<h2> Update Your Existing Account </h2>
+
+<form method="post" action="/accounts/<%=@account.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input id= "account" type="text" name="name" value="<%= @account.name %>" placeholder= "Account">
+  <input id= "password" type="text" name="password_content" value="<%= @account.password_content %>" placeholder= "Password">
+  <input type="submit" value="submit">
+</form>

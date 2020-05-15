@@ -1,0 +1,13 @@
+<p>Account: <%= %><%=@account.name%></p>
+<p>Password: <%= %><%=@account.password_content%></p>
+<br>
+<form method="post" action="/accounts/<%=@account.id%>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Account">
+  <input type="button" onclick="window.location.href = '/accounts/<%=@account.id%>/edit';" value="Edit Account"/>
+</form>
+
+<!-- <a href="/accounts/<%=@account.id%>/edit">Edit Account </a> <br><br> -->
+<br>
+
+<a href="/accounts">Back to list of Accounts</a>

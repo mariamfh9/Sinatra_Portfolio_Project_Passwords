@@ -1,8 +1,0 @@
-<h2> Update Your Existing Passwords </h2>
-
-<form method="post" action="/passwords/<%=@password.id%>">
-  <input id="hidden" type="hidden" name="_method" value="PATCH">
-  <input type="text" name="content" value="<%= @password.content %>">
-  <input type="submit" value="submit">
-</form>
-

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20200512180503) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string  "account_type"
+    t.string  "password_content"
     t.string  "name"
     t.integer "owner_id"
   end
@@ -22,11 +22,6 @@ ActiveRecord::Schema.define(version: 20200512180503) do
   create_table "owners", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-  end
-
-  create_table "passwords", force: :cascade do |t|
-    t.string  "content"
-    t.integer "account_id"
   end
 
 end

@@ -11,6 +11,9 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
+gem 'javascript', '~> 0.0.2'
+gem 'css', '~> 0.0.4'
+gem 'sinatra-flash', '~> 0.3.0'
 
 group :test do
   gem 'rspec'

@@ -8,7 +8,6 @@ end
 use Rack::MethodOverride
 
 use OwnersController
-use PasswordsController
 use AccountsController
 run ApplicationController
 
