@@ -23,7 +23,7 @@ $ shotgun
 
 ### Contributer's Guide
 
-All pull requests and bug reports are encouraged on Github at https://github.com/mariamfh9/Sinatra_Portfolio_Project_Passwords. Please adhere to the [Contributer Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct/) code of conduct. 
+All pull requests and bug reports are encouraged on Github at [Virtual Password Vault](https://github.com/mariamfh9/Sinatra_Portfolio_Project_Passwords). Please adhere to the [Contributer Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct/) code of conduct. 
 
 ## Image Credit 
 
